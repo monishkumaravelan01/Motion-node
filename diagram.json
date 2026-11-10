@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Monish Kumaravelan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 24.04, "attrs": {} },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu1",
+      "top": 31.78,
+      "left": 146.92,
+      "rotate": -90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu2",
+      "top": 127.78,
+      "left": 146.92,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "imu1:SDA", "esp:21", "green", [ "h0" ] ],
+    [ "imu2:SCL", "esp:22", "blue", [ "h0" ] ],
+    [ "imu1:SCL", "esp:22", "blue", [ "h0" ] ],
+    [ "imu1:INT", "esp:34", "orange", [ "h0" ] ],
+    [ "imu2:INT", "esp:35", "orange", [ "h0" ] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "imu1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "imu2:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "imu2:AD0", "esp:3V3", "red", [ "h0" ] ],
+    [ "imu2:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "imu2:SDA", "esp:21", "green", [ "h0" ] ],
+    [ "imu1:AD0", "esp:3V3", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
