@@ -35,7 +35,7 @@
     [ "imu2:AD0", "esp:3V3", "red", [ "h0" ] ],
     [ "imu2:VCC", "esp:3V3", "red", [ "h0" ] ],
     [ "imu2:SDA", "esp:21", "green", [ "h0" ] ],
-    [ "imu1:AD0", "esp:3V3", "green", [ "h0" ] ]
+    [ "imu1:AD0", "esp:GND.1", "black", [ "h0" ] ]
   ],
   "dependencies": {}
 }
