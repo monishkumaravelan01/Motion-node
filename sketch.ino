@@ -2,27 +2,18 @@
 #include <Wire.h>
 #include <SelfTest.h>
 #include <ImuConfig.h>
-
+#include <Timing.h>
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(921600);                       // 200 Hz CSV needs ~18 kB/s; 115200 only carries ~11.5 kB/s
   delay(200);
   Wire.begin(I2C_SDA, I2C_SCL, I2C_FREQ_HZ);
 
   bool ok = selfTest();                       // 1. bus + identity
-  for (uint16_t addr : IMU_ADDR) {
-    if (!initImu(addr)) {                     // 2. reset, wake, configure
-      Serial.printf("IMU @0x%02X init FAIL\n", addr);
-      ok = false;
-    }
-    ok &= verifyConfig(addr);                 // 3. confirm the settings stuck
-  }
+  ok &= configureImus();                      // 2. reset, wake, configure, verify
   Serial.println(ok ? "# SELFTEST PASS" : "# SELFTEST FAIL");
+
+  startSampler();                             // 3. timer + sampler + writer tasks
 }
 
-void loop() {
-  ImuSample s1 = {}, s2 = {};
-  if (readImu(IMU_ADDR[0], s1)) printSample("imu1", s1);
-  if (readImu(IMU_ADDR[1], s2)) printSample("imu2", s2);
-  delay(500);
-}
+void loop() { vTaskDelay(portMAX_DELAY); }    // all work happens in the tasks
