@@ -1,0 +1,182 @@
+{
+  "integrity": {
+    "frames": 14985,
+    "lost": 15,
+    "gap_events": 15,
+    "overrun": 0,
+    "imu1_err": 0,
+    "imu2_err": 0,
+    "dropped_flag": 0
+  },
+  "timing": {
+    "rate_hz": 199.99991181779558,
+    "jitter_us": 28.667917330768027,
+    "dt_min_us": 4892.0,
+    "dt_max_us": 5103.0,
+    "skew_mean_us": 768.0,
+    "skew_max_us": 768.0,
+    "timer_vs_nominal_ppm": -0.008613542377133854
+  },
+  "alignment": {
+    "offset_ms": -1.8914285714285712,
+    "ppm": 34.285714285714285
+  },
+  "calibration": {
+    "estimated": {
+      "imu1": {
+        "gyro_bias": 0.24338795731707322,
+        "mount_deg": 4.347310401025771
+      },
+      "imu2": {
+        "gyro_bias": 0.7660823170731709,
+        "mount_deg": -4.373146426611166
+      }
+    },
+    "skew_us": 770.4998605514792,
+    "truth": {
+      "gyro_bias": [
+        0.25344651620814146,
+        0.7753238220475741
+      ],
+      "mount": {
+        "thigh": 6.0,
+        "shank": -4.0
+      },
+      "skew_us": 768.0,
+      "clock_ppm": 40.0
+    }
+  },
+  "accuracy_session1": {
+    "rmse": 3.4918106987997395,
+    "bias": 2.943879526217025,
+    "max_abs": 6.9573557485500706,
+    "sd": 1.8779309477218626,
+    "loa_low": -0.7368651313178258,
+    "loa_high": 6.624624183751876
+  },
+  "filters_mean_rmse": {
+    "accel": 39.06053080853958,
+    "gyro": 2.590442716540558,
+    "complementary": 7.168083837004757,
+    "kalman": 1.5998682263776707
+  },
+  "monte_carlo": {
+    "runs": 30,
+    "rmse_mean": 2.01966329858525,
+    "rmse_p95": 4.108456089279513,
+    "rmse_max": 4.513901021216384,
+    "pass_rate": 0.8,
+    "error_bias": 0.7863008499928305,
+    "U_k2": 4.34923306285041
+  },
+  "error_budget": [
+    [
+      "Method only (ideal sensor)",
+      0.6120946006310749
+    ],
+    [
+      "Sensor noise (datasheet)",
+      0.6706200412532192
+    ],
+    [
+      "Gyro bias, calibrated",
+      0.5394728619272011
+    ],
+    [
+      "Gyro bias, NOT calibrated",
+      12.320828401851806
+    ],
+    [
+      "Gyro bias drift",
+      1.6970178046282143
+    ],
+    [
+      "Scale error (2 %)",
+      0.8438175847847592
+    ],
+    [
+      "Accel bias (30 mg)",
+      0.9247192629070685
+    ],
+    [
+      "Mounting offset, calibrated",
+      0.6133398032034156
+    ],
+    [
+      "Mounting offset, NOT calibrated",
+      9.424660843582531
+    ],
+    [
+      "Skew 768 us, compensated",
+      0.6251635198387436
+    ],
+    [
+      "Skew 768 us, NOT compensated",
+      0.5940348191944125
+    ],
+    [
+      "Clock drift 40 ppm",
+      0.6272604523709998
+    ],
+    [
+      "Lost frames (0.1 %)",
+      0.612670055997751
+    ],
+    [
+      "Heel-strike impacts (3 g)",
+      0.6120946006310749
+    ]
+  ],
+  "requirements": {
+    "noise_x": [
+      1,
+      5,
+      20,
+      50,
+      100,
+      200
+    ],
+    "noise_rmse": [
+      2.3989867461590086,
+      2.5773158986085263,
+      3.044671287221725,
+      14.059183461082531,
+      16.155315736399785,
+      26.58596645468423
+    ],
+    "skew_us": [
+      0,
+      500,
+      1000,
+      2000,
+      3000,
+      5000
+    ],
+    "skew_rmse": [
+      2.4019069057940197,
+      2.4078532369924672,
+      2.3999840776616104,
+      2.382150522409777,
+      2.3927601635549762,
+      2.4677667780602497
+    ]
+  },
+  "clipping_8g": {
+    "walking 3 g": {
+      "peak_g": 4.3,
+      "saturated_ms": 0.0
+    },
+    "running 12 g": {
+      "peak_g": 12.8,
+      "saturated_ms": 495.0
+    }
+  },
+  "checks": {
+    "sample rate within \u00b11 %": 1.0,
+    "jitter < 100 \u00b5s": true,
+    "skew < 1000 \u00b5s": true,
+    "lost frames detected (seq gaps = injected)": true,
+    "knee RMSE < 3.0\u00b0 (mean of 30 runs)": 1.0,
+    "knee RMSE < 3.0\u00b0 (95th percentile)": false
+  }
+}
